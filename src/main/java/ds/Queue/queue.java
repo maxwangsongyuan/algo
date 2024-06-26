@@ -1,4 +1,4 @@
-package ds;
+package ds.Queue;
 
 import java.util.HashMap;
 import java.util.LinkedList;
