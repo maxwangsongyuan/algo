@@ -305,6 +305,54 @@ public class stack {
         }
     }
 
+
+    //--------------------------------------------------------------------------------
+
+    /**
+     * leetcode 232 Implement a first in first out (FIFO) queue using only two stacks.
+     * 队尾插入元素，队首删除元素
+     *
+     * 队头移除
+     * 先把s2 所有元素移动到s1
+     */
+    class MyQueue {
+        Stack<Integer> stack1;
+        Stack<Integer> stack2;
+        public MyQueue() {
+            stack1 = new Stack<>();
+            stack2 = new Stack<>();
+        }
+
+        public void push(int x) {
+            stack2.push(x);
+        }
+
+        public int pop() {
+            if(stack1.isEmpty()) {
+                while (!stack2.isEmpty()) {
+                    stack1.push(stack2.pop());
+                }
+            }
+            return stack1.pop();
+        }
+
+        public int peek() {
+            if(stack1.isEmpty()) {
+                while (!stack2.isEmpty()) {
+                    stack1.push(stack2.pop());
+                }
+            }
+            return stack1.peek();
+        }
+
+        public boolean empty() {
+            return stack1.isEmpty() && stack2.isEmpty();
+        }
+    }
+
+
+    //--------------------------------------------------------------------------------
+
     //For Loop in While Loop:
     //Useful when each element might cause multiple changes to the stack.
     //Example use cases: collisions, nested structures.
