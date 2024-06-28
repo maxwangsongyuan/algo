@@ -1,6 +1,8 @@
 package ds.Stack;
 
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Stack;
 
 public class stack {
@@ -347,6 +349,50 @@ public class stack {
 
         public boolean empty() {
             return stack1.isEmpty() && stack2.isEmpty();
+        }
+    }
+
+    //--------------------------------------------------------------------------------
+
+    /**
+     * leetcode 225
+     * Implement the following operations of a stack using queues.
+     * push(x) -- Push element x onto stack.
+     * pop() -- Removes the element on top of the stack.
+     * top() -- Get the top element.
+     * empty() -- Return whether the stack is empty
+     *
+     * 解题思路：
+     * 用一个队列实现栈
+     * push(x) 时，先把队列中的先取出，
+     * 然后再把x加入队列， 再把之前取出的元素加入队列
+     */
+    class MyStack {
+        Queue<Integer> queue;
+        int size = 0;
+        public MyStack() {
+            queue = new LinkedList<>();
+        }
+
+        public void push(int x) {
+            queue.offer(x);
+            for (int i = 0; i < size; i++) {
+                queue.offer(queue.poll());
+            }
+            size++;
+        }
+
+        public int pop() {
+            size--;
+            return queue.poll();
+        }
+
+        public int top() {
+            return queue.peek();
+        }
+
+        public boolean empty() {
+            return queue.isEmpty();
         }
     }
 
