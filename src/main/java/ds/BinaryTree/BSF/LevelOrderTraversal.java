@@ -1,6 +1,6 @@
-package ds.BinaryTree;
+package ds.BinaryTree.BSF;
 
-import ds.Queue.QueueImpl;
+import ds.BinaryTree.TreeNode;
 
 import java.util.LinkedList;
 import java.util.List;
