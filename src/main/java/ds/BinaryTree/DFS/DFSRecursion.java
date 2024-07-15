@@ -2,7 +2,7 @@ package ds.BinaryTree.DFS;
 
 import ds.BinaryTree.TreeNode;
 
-public class TreeTraversalRecursion {
+public class DFSRecursion {
 
         /*
           1
@@ -50,7 +50,7 @@ public class TreeTraversalRecursion {
                         new TreeNode(3, new TreeNode(5), new TreeNode(6))
                 );
 
-        TreeTraversalRecursion treeTraversalRecursion = new TreeTraversalRecursion();
+        DFSRecursion DFSRecursion = new DFSRecursion();
         preOrder(root);
         System.out.println();
         inOrder(root);
