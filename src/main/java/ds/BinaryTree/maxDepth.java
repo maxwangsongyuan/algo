@@ -1,6 +1,8 @@
 package ds.BinaryTree;
 
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class maxDepth {
     /**
@@ -24,7 +26,7 @@ public class maxDepth {
     }
 
     /**
-     * iteration leetcode 104 postOrder traversal
+     * iteration leetcode 104 dfs postOrder traversal
      * @param root
      * @return
      */
@@ -58,6 +60,45 @@ public class maxDepth {
         return maxDepth;
     }
 
+    /**
+     * iteration leetcode 104 bfs traversal
+     * @param root
+     * @return
+     */
+    public int maxDepth3(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int maxDepth = 0;
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode node = queue.poll();
+//                System.out.println(node.val + " " + maxDepth);
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+
+            maxDepth++;
+        }
+
+        return maxDepth;
+    }
+
+    /**
+     *
+     *    1
+     *  / \
+     *  2  3
+     *  /  / \
+     *  4  5  6
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         TreeNode root = new TreeNode
                 (1,
@@ -69,6 +110,8 @@ public class maxDepth {
         System.out.println(maxDepth.maxDepth(root));
 
         System.out.println(maxDepth.maxDepth2(root));
+
+        System.out.println(maxDepth.maxDepth3(root));
     }
 
 
