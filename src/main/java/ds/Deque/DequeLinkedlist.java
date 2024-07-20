@@ -23,6 +23,11 @@ public class DequeLinkedlist<E> implements DequeImpl<E>, Iterable<E> {
         return true;
     }
 
+    /**
+     * Add an element to the end of the deque.
+     * @param val
+     * @return
+     */
     @Override
     public boolean offerLast(E val) {
         return false;
