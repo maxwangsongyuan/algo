@@ -1,6 +1,8 @@
 package ds.HashMap;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class lengthOfLongestSubstring {
 
@@ -39,6 +41,36 @@ public class lengthOfLongestSubstring {
             maxLen = Math.max(maxLen, end - begin + 1);
         }
         return maxLen;
+    }
+
+    //recommended: sliding window
+
+    //example: abcabcbb
+    /*
+     *要点：
+     * 1. 用set记录当前子串中的字符
+     * 2. 用left和right表示子串的开始和结束位置，right向右移动
+     *   如果遇到重复字符，left向右移动
+     * 3. 每次right移动，都要更新maxLength
+     * 4. right - left 是当前子串长度
+     */
+    public int lengthOfLongestSubstring2(String s) {
+        int n = s.length();
+        Set<Character> set = new HashSet<>();
+        int maxLength = 0, left = 0, right = 0;
+
+        while (right < n) {
+            if (!set.contains(s.charAt(right))) {
+                set.add(s.charAt(right));
+                right++;
+                maxLength = Math.max(maxLength, right - left);
+            } else {
+                set.remove(s.charAt(left));
+                left++;
+            }
+        }
+
+        return maxLength;
     }
 
     public static void main(String[] args) {
