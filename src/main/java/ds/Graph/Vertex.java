@@ -7,6 +7,10 @@ public class Vertex {
     List<Edge> edges;
     boolean visited;
 
+    int inDegree;
+
+    int status; // 0: unvisited, 1: visiting, 2: visited
+
     public Vertex(String name, List<Edge> edges) {
         this.name = name;
         this.edges = edges;
@@ -16,6 +20,13 @@ public class Vertex {
         this.name = name;
         this.edges = edges;
         this.visited = visited;
+    }
+
+    public Vertex(String name, List<Edge> edges, boolean visited, int inDegree) {
+        this.name = name;
+        this.edges = edges;
+        this.visited = visited;
+        this.inDegree = inDegree;
     }
 
     public Vertex(String name) {
