@@ -30,7 +30,7 @@ a          d
 
 //        dfs(a);
 
-        dfs2(a);
+        dfs3(a);
     }
 
     /* dfs:
@@ -50,6 +50,7 @@ a          d
 
     /*
     stack dfs:
+    a -> c -> d -> b
      */
     public static void dfs2(Vertex vertex) {
         LinkedList<Vertex> stack = new LinkedList<>();
@@ -67,4 +68,23 @@ a          d
             }
         }
     }
+
+    public static void dfs3(Vertex vertex) {
+        LinkedList<Vertex> stack = new LinkedList<>();
+        stack.push(vertex);
+        vertex.visited = true; // Mark as visited when added to stack
+
+        while (!stack.isEmpty()) {
+            Vertex current = stack.pop();
+            System.out.println(current.getName());
+
+            for (Edge edge : current.edges) {
+                if (!edge.linked.visited) {
+                    stack.push(edge.linked);
+                    edge.linked.visited = true; // Mark as visited when added to stack
+                }
+            }
+        }
+    }
+
 }
